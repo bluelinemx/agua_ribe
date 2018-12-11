@@ -1,0 +1,4 @@
+[submodule "bluelinemx/smp"]
+	path = bluelinemx/smp
+	url = git@github.com:bluelinemx/smp.git
+	branch = master
