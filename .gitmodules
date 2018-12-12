@@ -7,3 +7,8 @@
 	path = bluelinemx/agua_ribe
 	url = git@github.com:bluelinemx/agua_ribe.git
 	branch = prueba
+
+[submodule "bluelinemx/qsmx"]
+	path = bluelinemx/qsmx
+	url = git@github.com:bluelinemx/qsmx.git
+	branch = master
