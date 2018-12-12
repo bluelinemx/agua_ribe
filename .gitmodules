@@ -2,3 +2,8 @@
 	path = bluelinemx/smp
 	url = git@github.com:bluelinemx/smp.git
 	branch = master
+
+[submodule "bluelinemx/agua_ribe"]
+	path = bluelinemx/agua_ribe
+	url = git@github.com:bluelinemx/agua_ribe.git
+	branch = prueba
