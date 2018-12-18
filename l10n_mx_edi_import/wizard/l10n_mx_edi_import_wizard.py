@@ -516,6 +516,10 @@ class EdiImport(models.TransientModel):
                                         'tax': tax_item,
                                         'amount': amount
                                     })
+                                else:
+                                    raise UserError(
+                                        _(
+                                            'Unable to find tax for %s %%') % ( tasa,))
 
                 if hasattr(item.Impuestos, 'Retenciones'):
                     for tIndex in range(item.Impuestos.Retenciones.countchildren()):
@@ -542,6 +546,10 @@ class EdiImport(models.TransientModel):
                                         'tax': tax_item,
                                         'amount': -amount
                                     })
+                                else:
+                                    raise UserError(
+                                        _(
+                                            'Unable to find retention for %s %%') % ( tasa,))
 
         price_subtotal = float(item.attrib.get('Importe', item.attrib.get('importe', 0)))
         quantity = float(item.attrib.get('Cantidad', item.attrib.get('cantidad', 0)))
