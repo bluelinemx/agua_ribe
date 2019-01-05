@@ -136,6 +136,7 @@ class EdiImport(models.TransientModel):
     l10n_mx_edi_cfdi_name = fields.Char()
     l10n_mx_edi_cfdi_uuid = fields.Char('UUID')
     l10n_mx_edi_cfdi = fields.Char("CFDI")
+    l10n_mx_edi_cfdi_payment_method = fields.Char('Payment Method')
     l10n_mx_edi_cfdi_supplier_rfc = fields.Char('RFC')
     l10n_mx_edi_cfdi_supplier_name = fields.Char('Name')
     l10n_mx_edi_cfdi_customer_rfc = fields.Char('RFC')
@@ -178,6 +179,12 @@ class EdiImport(models.TransientModel):
                 [('name', '=', self.payment_term_name)], limit=1)
             self.payment_term_id = payment_term.id or False
             self.has_payment_term = payment_term.id is not False
+
+        if not self.payment_term_id and self.l10n_mx_edi_cfdi_payment_method:
+            if self.l10n_mx_edi_cfdi_payment_method == 'PPD':
+                self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_ppd_payment_term_id.id
+            elif self.l10n_mx_edi_cfdi_payment_method == 'PUE':
+                self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_pue_payment_term_id.id
 
         if self.currency_code:
             self.currency_id = self.env['res.currency'].search([('name', '=', self.currency_code)]).id
@@ -414,6 +421,7 @@ class EdiImport(models.TransientModel):
             self.amount_tax = float(taxes_section.attrib.get('TotalImpuestosTrasladados', 0))
 
         self.payment_term_name = xml.attrib.get('CondicionesDePago') or ''
+        self.l10n_mx_edi_cfdi_payment_method = xml.attrib.get('MetodoPago') or 'PUE'
 
         self.l10n_mx_edi_cfdi_supplier_name = xml.Emisor.attrib.get('Nombre', xml.Emisor.attrib.get('nombre'))
         self.l10n_mx_edi_cfdi_supplier_rfc = xml.Emisor.attrib.get('Rfc', xml.Emisor.attrib.get('rfc'))

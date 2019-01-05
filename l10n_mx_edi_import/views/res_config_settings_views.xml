@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.mx</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='multi_company']" position="after">
+                <h2>Mexico EDI Configuration</h2>
+
+                <div class="row mt16 o_settings_container" title="EDI Config">
+
+
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="l10n_mx_edi_import_ppd_payment_term_id"/>
+                            <div class="row">
+                                <div class="text-muted col-md-8">
+                                    Payment Term to apply to imported EDI Invoices when no payment term is defined in
+                                    the XML file and payment method is PPD
+                                </div>
+                            </div>
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="l10n_mx_edi_import_ppd_payment_term_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="l10n_mx_edi_import_pue_payment_term_id"/>
+                            <div class="row">
+                                <div class="text-muted col-md-8">
+                                    Payment Term to apply to imported EDI Invoices when no payment term is defined in
+                                    the XML file and payment method is PUE
+                                </div>
+                            </div>
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="l10n_mx_edi_import_pue_payment_term_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
