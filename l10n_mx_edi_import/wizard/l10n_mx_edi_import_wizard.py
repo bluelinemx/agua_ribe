@@ -180,11 +180,12 @@ class EdiImport(models.TransientModel):
             self.payment_term_id = payment_term.id or False
             self.has_payment_term = payment_term.id is not False
 
-        if not self.payment_term_id and self.l10n_mx_edi_cfdi_payment_method:
-            if self.l10n_mx_edi_cfdi_payment_method == 'PPD':
-                self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_ppd_payment_term_id.id
-            elif self.l10n_mx_edi_cfdi_payment_method == 'PUE':
-                self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_pue_payment_term_id.id
+        #TODO: fix? this not working in production
+        # if not self.payment_term_id and self.l10n_mx_edi_cfdi_payment_method:
+        #     if self.l10n_mx_edi_cfdi_payment_method == 'PPD':
+        #         self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_ppd_payment_term_id.id
+        #     elif self.l10n_mx_edi_cfdi_payment_method == 'PUE':
+        #         self.payment_term_id = self.env.user.company_id.l10n_mx_edi_import_pue_payment_term_id.id
 
         if self.currency_code:
             self.currency_id = self.env['res.currency'].search([('name', '=', self.currency_code)]).id

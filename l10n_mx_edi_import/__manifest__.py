@@ -22,7 +22,7 @@
         'wizard/l10n_mx_edi_import_wizard_view.xml',
         'views/views.xml',
         'views/templates.xml',
-        'views/res_config_settings_views.xml',
+        # 'views/res_config_settings_views.xml',
     ]
 }
 
