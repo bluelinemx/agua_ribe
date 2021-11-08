@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Mexico EDI Import",
+    'name': "Mexico EDI Import for QSMX",
 
     'summary': """
         Allow to import edi xml files into invoices""",
@@ -15,13 +15,10 @@
     'category': 'Invoicing Management',
     'version': '0.1',
 
-    'depends': ['l10n_mx', 'l10n_mx_edi'],
+    'depends': ['l10n_mx_edi_import'],
 
     'data': [
-        'security/ir.model.access.csv',
-        'wizard/l10n_mx_edi_import_wizard_view.xml',
-        'views/views.xml',
-        'views/templates.xml',
-    ]
+    ],
+    'auto_install': True
 }
 
